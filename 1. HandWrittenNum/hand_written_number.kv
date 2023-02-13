@@ -1,0 +1,70 @@
+<HandWrittenNumber@BoxLayout>:
+
+    orientation: 'vertical'
+
+    ActionBar:
+        ActionView:
+            ActionPrevious:
+                title: '手書き数字'
+                with_previous: False
+            ActionButton:
+                text: '手書き数字'
+                on_press: app.root.change_hand_written_number()
+            ActionButton:
+                text: 'DB管理'
+                on_press: app.root.change_db_manage()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size: root.size
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint:(.4, 1)
+            padding: "20dp"
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint:(1, .1)
+                Label:
+                    size_hint:(.7, 1)
+                    font_size: 20
+                    text: '手入力してください'
+                Button:
+                    size_hint:(.3, 1)
+                    font_size: 20
+                    text: 'リセット'
+                    on_release: paint_area.clear_canvas()
+
+            Paint:
+                id: paint_area
+                canvas.before:
+                    Color:
+                        rgb: 1,1,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                size_hint:(1, .5)
+            Button:
+                font_size: 20
+                size_hint:(1, .1)
+                text: 'Teach me！'
+                on_release: paint_area.press_teach()
+
+        FloatLayout:
+            size_hint:(.6, 1)
+            padding: "20dp"
+            Image:
+                pos_hint: {'x':0, 'y':0}
+                source: './image/' + paint_area.filename
+            Image:
+                opacity: paint_area.show_result
+                pos_hint: {'x':.05, 'y':.1}
+                size_hint: [0.4, 0.4]
+                source: './image/speech_balloon.png'
+            Label:
+                opacity: paint_area.show_result
+                pos_hint: {'x':.05, 'y':.05}
+                size_hint: [0.4, 0.4]
+                font_size: paint_area.font_size
+                color: 0, 0, 0
+                text: paint_area.result_sentence

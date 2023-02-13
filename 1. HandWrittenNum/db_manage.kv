@@ -1,0 +1,140 @@
+<DBManage>:
+    orientation: 'vertical'
+
+    ActionBar:
+        ActionView:
+            ActionPrevious:
+                title: 'DB管理'
+                with_previous: False
+            ActionButton:
+                text: '手書き数字'
+                on_press: app.root.change_hand_written_number()
+            ActionButton:
+                text: 'DB管理'
+                on_press: app.root.change_db_manage()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size: root.size
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint:(.4, 1)
+            padding: "20dp"
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint:(1, .2)
+                padding: "20dp"
+                Label:
+                    size_hint:(.5, 1)
+                    font_size: 20
+                    font_name: 'C:\Windows\Fonts\msgothic.ttc'
+                    text: 'ラベル'
+                TextInput:
+                    size_hint:(.5, 1)
+                    font_size: 20
+                    text: root.label
+                    on_text: root.on_text(self.text)
+            Label:
+                text: 'Image'
+                size_hint:(1, .5)
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint:(1, .2)
+                padding: "20dp"
+                Button:
+                    size_hint:(.1, 1)
+                    font_size: 20
+                    text: '<<'
+                    on_release: root.press_min_record()
+                Button:
+                    size_hint:(.1, 1)
+                    font_size: 20
+                    text: '<'
+                    on_release: root.press_back()
+                TextInput:
+                    size_hint:(.6, 1)
+                    font_size: 20
+                    text:root.record_id
+                Button:
+                    size_hint:(.1, 1)
+                    font_size: 20
+                    text: '>'
+                    on_release: root.press_next()
+                Button:
+                    size_hint:(.1, 1)
+                    font_size: 20
+                    text: '>>'
+                    on_release: root.press_max_record()
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint:(.6, 1)
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint:(1, .1)
+                Label:
+                    text: ''
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint:(1, .8)
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint:(.15, 1)
+                    Label:
+                        text: '-1'
+                    Label:
+                        text: '0'
+                    Label:
+                        text: '1'
+                    Label:
+                        text: '2'
+                    Label:
+                        text: '3'
+                    Label:
+                        text: '4'
+                    Label:
+                        text: '5'
+                    Label:
+                        text: '6'
+                    Label:
+                        text: '7'
+                    Label:
+                        text: '8'
+                    Label:
+                        text: '9'
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint:(.7, 1)
+                    Label:
+                        text: ''
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint:(.15, 1)
+                    Label:
+                        text: root.label_num_str_list[0]
+                    Label:
+                        text: root.label_num_str_list[1]
+                    Label:
+                        text: root.label_num_str_list[2]
+                    Label:
+                        text: root.label_num_str_list[3]
+                    Label:
+                        text: root.label_num_str_list[4]
+                    Label:
+                        text: root.label_num_str_list[5]
+                    Label:
+                        text: root.label_num_str_list[6]
+                    Label:
+                        text: root.label_num_str_list[7]
+                    Label:
+                        text: root.label_num_str_list[8]
+                    Label:
+                        text: root.label_num_str_list[9]
+                    Label:
+                        text: root.label_num_str_list[10]
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint:(1, .1)
+                Label:
+                    text: ''
